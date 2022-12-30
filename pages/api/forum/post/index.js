@@ -1,5 +1,6 @@
 import dbConnect from "../../../../utils/dbConnect";
 import PostDB from "../../../../models/post";
+import md5 from "js-md5";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
       } else {
         await dbConnect();
         const NewPost = new PostDB({
+          id: md5(Date.now().toString()),
           title: req.body.title,
           content: req.body.content,
           category: req.body.category,

@@ -14,6 +14,7 @@
     "eslint-config-next": "^12.0.4",
     "flowbite": "^1.5.5",
     "flowbite-react": "^0.3.7",
+    "js-md5": "^0.7.3",
     "mongoose": "^6.8.2",
     "next": "^13.1.1",
     "react": "^18.2.0",
