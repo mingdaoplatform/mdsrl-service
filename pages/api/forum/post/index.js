@@ -29,7 +29,7 @@ export default async function handler(req, res) {
           last_update: Date.now(),
           created_time: Date.now(),
         });
-        NewPost.save();
+        await NewPost.save();
         res.status(201).json({ message: "201: Successful Create Post" });
       }
     }
