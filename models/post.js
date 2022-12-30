@@ -12,11 +12,13 @@ const PostSchema = new mongoose.Schema({
   like: Number,
   reply: [
     {
+      id: String,
       author: String,
       author_id: String,
       content: String,
       floor: String,
-      time: String,
+      last_update: String,
+      created_time: String,
     },
   ],
   collect: Number,
