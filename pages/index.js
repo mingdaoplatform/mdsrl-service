@@ -1,9 +1,11 @@
+import Post from "../components/home/post";
+
 export default function Home() {
   return (
     <>
       <main>
-        <div className="text-center">
-          <h1 className="text-2xl font-semibold mt-5">Main</h1>
+        <div className="flex flex-column p-3">
+          <Post></Post>
         </div>
       </main>
     </>
