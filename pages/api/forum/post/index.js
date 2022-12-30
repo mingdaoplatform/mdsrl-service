@@ -3,10 +3,10 @@ import PostDB from "../../../../models/post";
 import md5 from "js-md5";
 
 export default async function handler(req, res) {
+  const body = req.body;
+  const headers = req.headers;
+  const key = process.env.NEXT_PUBLIC_POSTKEY;
   if (req.method === "POST") {
-    const body = req.body;
-    const headers = req.headers;
-    const key = process.env.NEXT_PUBLIC_POSTKEY;
     if (!headers.key) {
       res.status(401).json({ message: "401: Unauthorized" });
     } else if (headers.key !== key) {
@@ -36,7 +36,17 @@ export default async function handler(req, res) {
       }
     }
   } else if (req.method === "GET") {
-    res.status(200).json({ path: "/api/forum/post" });
+    if (!headers.key) {
+      res.status(401).json({ message: "401: Unauthorized" });
+    } else if (headers.key !== key) {
+      res.status(401).json({ message: "401: Invalid authentication token" });
+    } else {
+      await dbConnect();
+      const posts = await PostDB.find({});
+      res
+        .status(200)
+        .json({ message: "200: Successful Get Posts", data: posts });
+    }
   } else {
     res.status(405).json({ message: "405: Method Not Allow" });
   }
