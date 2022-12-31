@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { BsArrowLeftShort, BsFillLayersFill, BsSearch } from "react-icons/bs";
+import { FaFire } from "react-icons/fa";
+import { IoIosTime } from "react-icons/io";
+import {
+  BsArrowLeftShort,
+  BsFillLayersFill,
+  BsFillGearFill,
+  BsFillPersonFill,
+  BsFillTrophyFill,
+} from "react-icons/bs";
 
 export default function SideBar() {
   const [open, setOpen] = useState(true);
@@ -33,14 +41,68 @@ export default function SideBar() {
           NGOM
         </h1>
       </div>
-      {/* <div className="flex items-center rounded-md bg-light-white mt-6 px-4 py-2">
-        <BsSearch className="text-white text-lg block float-left cursor-pointer mr-2" />
-        <input
-          type={"search"}
-          placeholder="搜尋..."
-          className="text-base bg-transparent w-full text-white focus:outline-none outline-none border-none focus:border-none"
-        />
-      </div> */}
+      <ul className="pt-12">
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+          <span className="text-2xl block float-left">
+            <FaFire />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+            }
+          >
+            熱門討論
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+          <span className="text-2xl block float-left">
+            <IoIosTime />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+            }
+          >
+            最新討論
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-9">
+          <span className="text-2xl block float-left">
+            <BsFillTrophyFill />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+            }
+          >
+            新排行榜
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-9">
+          <span className="text-2xl block float-left">
+            <BsFillGearFill />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+            }
+          >
+            變更設定
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+          <span className="text-2xl block float-left">
+            <BsFillPersonFill />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+            }
+          >
+            我的帳號
+          </span>
+        </li>
+      </ul>
     </div>
   );
 }
