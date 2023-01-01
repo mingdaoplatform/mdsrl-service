@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { FaFire } from "react-icons/fa";
 import { MdNoteAdd } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
@@ -12,11 +13,12 @@ import {
 } from "react-icons/bs";
 
 export default function SideBar() {
+  const router = useRouter();
   const [open, setOpen] = useState(true);
   return (
     <div
       className={
-        "bg-dark-purple h-screen p-5 pt-8 relative duration-300 max-md:w-20 " +
+        "bg-dark-purple h-screen p-5 pt-8 relative duration-300 max-md:w-20 select-none " +
         (open ? " w-56" : "w-20")
       }
     >
@@ -27,7 +29,10 @@ export default function SideBar() {
         }
         onClick={() => setOpen(!open)}
       />
-      <div className="inline-flex mt-0.5">
+      <div
+        className="inline-flex mt-0.5 cursor-pointer"
+        onClick={() => router.push("/")}
+      >
         <BsFillLayersFill
           className={
             "text-white text-4xl cursor-pointer block float-left mr-2 duration-500 " +
@@ -36,7 +41,7 @@ export default function SideBar() {
         />
         <h1
           className={
-            "text-white origin-left text-2xl duration-300 max-md:scale-0 font-semibold " +
+            "text-white origin-left text-2xl duration-300 max-md:scale-0 font-semibold cursor-pointer " +
             (!open && "scale-0")
           }
         >
