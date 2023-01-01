@@ -50,7 +50,10 @@ export default function SideBar() {
       </div>
       <ul className="pt-12">
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname.startsWith("/new") && "bg-light-white")
+          }
           onClick={() => router.push("/new")}
         >
           <span className="text-2xl block float-left">
@@ -66,8 +69,11 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
-          onClick={() => router.push("/latest")}
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname === "/" && "bg-light-white")
+          }
+          onClick={() => router.push("/")}
         >
           <span className="text-2xl block float-left">
             <IoIosTime />
@@ -82,7 +88,10 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname.startsWith("/hot") && "bg-light-white")
+          }
           onClick={() => router.push("/hot")}
         >
           <span className="text-2xl block float-left">
@@ -98,7 +107,10 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname.startsWith("/subject") && "bg-light-white")
+          }
           onClick={() => router.push("/subject")}
         >
           <span className="text-2xl block float-left">
@@ -117,7 +129,10 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname.startsWith("/rank") && "bg-light-white")
+          }
           onClick={() => router.push("/rank")}
         >
           <span className="text-2xl block float-left">
@@ -136,7 +151,10 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12 " +
+            (router.pathname.startsWith("/setting") && "bg-light-white")
+          }
           onClick={() => router.push("/setting")}
         >
           <span className="text-2xl block float-left">
@@ -152,7 +170,10 @@ export default function SideBar() {
           </span>
         </li>
         <li
-          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          className={
+            "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+            (router.pathname.startsWith("/account") && "bg-light-white")
+          }
           onClick={() => router.push("/account")}
         >
           <span className="text-2xl block float-left">
