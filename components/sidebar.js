@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaFire } from "react-icons/fa";
+import { MdNoteAdd } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
+import { AiFillCalculator } from "react-icons/ai";
 import {
   BsArrowLeftShort,
   BsFillLayersFill,
@@ -15,7 +17,7 @@ export default function SideBar() {
     <div
       className={
         "bg-dark-purple h-screen p-5 pt-8 relative duration-300 max-md:w-20 " +
-        (open ? "w-72" : "w-20")
+        (open ? " w-56" : "w-20")
       }
     >
       <BsArrowLeftShort
@@ -44,14 +46,15 @@ export default function SideBar() {
       <ul className="pt-12">
         <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
           <span className="text-2xl block float-left">
-            <FaFire />
+            <MdNoteAdd />
           </span>
           <span
             className={
-              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden ")
             }
           >
-            熱門討論
+            建立問題
           </span>
         </li>
         <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
@@ -60,31 +63,60 @@ export default function SideBar() {
           </span>
           <span
             className={
-              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
             }
           >
             最新討論
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-9">
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+          <span className="text-2xl block float-left">
+            <FaFire />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
+            }
+          >
+            熱門討論
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+          <span className="text-2xl block float-left">
+            <AiFillCalculator />
+          </span>
+          <span
+            className={
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
+            }
+          >
+            科目選擇
+          </span>
+        </li>
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
           <span className="text-2xl block float-left">
             <BsFillTrophyFill />
           </span>
           <span
             className={
-              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
             }
           >
             新排行榜
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-9">
+        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12">
           <span className="text-2xl block float-left">
             <BsFillGearFill />
           </span>
           <span
             className={
-              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
             }
           >
             變更設定
@@ -96,7 +128,8 @@ export default function SideBar() {
           </span>
           <span
             className={
-              "text-base font-medium flex-1 duration-200 " + (!open && "hidden")
+              "text-base font-medium flex-1 duration-200 truncate " +
+              (!open && "hidden")
             }
           >
             我的帳號
