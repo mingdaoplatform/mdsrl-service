@@ -19,7 +19,7 @@ export default function SideBar() {
     <div
       className={
         "bg-dark-purple h-screen p-5 pt-8 relative duration-300 max-md:w-20 select-none " +
-        (open ? " w-56" : "w-20")
+        (open ? " w-[230px]" : "w-20")
       }
     >
       <BsArrowLeftShort
@@ -49,7 +49,10 @@ export default function SideBar() {
         </h1>
       </div>
       <ul className="pt-12">
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/new")}
+        >
           <span className="text-2xl block float-left">
             <MdNoteAdd />
           </span>
@@ -62,7 +65,10 @@ export default function SideBar() {
             建立問題
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/latest")}
+        >
           <span className="text-2xl block float-left">
             <IoIosTime />
           </span>
@@ -75,7 +81,10 @@ export default function SideBar() {
             最新討論
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/hot")}
+        >
           <span className="text-2xl block float-left">
             <FaFire />
           </span>
@@ -88,7 +97,10 @@ export default function SideBar() {
             熱門討論
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/subject")}
+        >
           <span className="text-2xl block float-left">
             <AiFillCalculator />
           </span>
@@ -99,9 +111,15 @@ export default function SideBar() {
             }
           >
             科目選擇
+            <span className="bg-blue-600 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-2">
+              Beta
+            </span>
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/rank")}
+        >
           <span className="text-2xl block float-left">
             <BsFillTrophyFill />
           </span>
@@ -112,9 +130,15 @@ export default function SideBar() {
             }
           >
             新排行榜
+            <span className="bg-blue-600 text-white text-sm font-medium mr-2 px-2.5 py-0.5 rounded ml-2">
+              Beta
+            </span>
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12"
+          onClick={() => router.push("/setting")}
+        >
           <span className="text-2xl block float-left">
             <BsFillGearFill />
           </span>
@@ -127,7 +151,10 @@ export default function SideBar() {
             變更設定
           </span>
         </li>
-        <li className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2">
+        <li
+          className="text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2"
+          onClick={() => router.push("/account")}
+        >
           <span className="text-2xl block float-left">
             <BsFillPersonFill />
           </span>
