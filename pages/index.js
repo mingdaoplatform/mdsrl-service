@@ -17,7 +17,6 @@ export default function Home() {
         }
       });
   });
-  console.log(posts);
   const PostHtml = [];
   if (posts.length === 0) {
     PostHtml.push(
@@ -28,12 +27,14 @@ export default function Home() {
   } else {
     for (var i = 0; i < posts.length; i++) {
       PostHtml.push(
-        <Post
-          title={posts[i].title}
-          content={posts[i].content}
-          solved={posts[i].solved}
-          key={posts[i].id}
-        />
+        <div className="flex flex-column p-3" key={posts[i].id}>
+          <Post
+            title={posts[i].title}
+            content={posts[i].content}
+            solved={posts[i].solved}
+            key={posts[i].id}
+          />
+        </div>
       );
     }
   }
