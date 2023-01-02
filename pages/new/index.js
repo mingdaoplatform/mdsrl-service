@@ -4,7 +4,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 export default function New() {
   return (
     <>
-      <main className="p-4 flex items-center flex-col select-none overflow-auto h-[calc(100vh-105px)]">
+      <main className="p-4 flex items-center flex-col select-none overflow-auto h-[calc(100vh-105px)] ">
         <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-9/10 lg:w-full h-auto">
           <h1 className="text-dark-purple text-2xl font-bold">新增問題</h1>
           <div className="mt-4 flex gap-1 flex-col lg:flex-row">
@@ -50,7 +50,7 @@ export default function New() {
                 <option value="27">其他</option>
               </select>
             </div>
-            <div className="flex flex-col w-full lg:w-4/6">
+            <div className="flex flex-col w-4/6">
               <label className="mb-1" htmlFor="title">
                 標題
               </label>

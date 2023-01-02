@@ -3,5 +3,28 @@
 @tailwind utilities;
 
 :root {
+  height: 100%;
+  max-width: 100%;
   background-color: #f8f9fc;
+  /* -ms-overflow-style: none;
+  scrollbar-width: 0; */
 }
+
+/* body {
+  height: 100%;
+  max-width: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: 0;
+}
+
+html {
+  height: 100%;
+  max-width: 100%;
+  overflow: -moz-hidden-unscrollable;
+  height: fit-content;
+  scrollbar-width: 0;
+} */
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */

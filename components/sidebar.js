@@ -18,13 +18,13 @@ export default function SideBar() {
   return (
     <div
       className={
-        "bg-dark-purple h-screen p-5 pt-8 relative duration-300 max-md:w-20 select-none " +
-        (open ? " w-[230px]" : "w-20")
+        "sidebar bg-dark-purple max-h-full p-5 pt-8 relative duration-300 max-md:w-20 select-none overflow-y-scroll overflow-x-hidden " +
+        (open ? "w-[230px]" : "w-20")
       }
     >
       <BsArrowLeftShort
         className={
-          "bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer max-md:hidden " +
+          "z-50 bg-white text-dark-purple text-3xl rounded-full absolute -right-3 top-9 border border-dark-purple cursor-pointer max-md:hidden " +
           (!open && "rotate-180")
         }
         onClick={() => setOpen(!open)}
