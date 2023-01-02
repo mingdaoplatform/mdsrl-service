@@ -29,6 +29,7 @@ export default function Home() {
       PostHtml.push(
         <div className="flex flex-column p-3" key={posts[i].id}>
           <Post
+            id={posts[i].id}
             title={posts[i].title}
             content={posts[i].content}
             solved={posts[i].solved}
