@@ -18,8 +18,8 @@ export default function SideBar() {
   return (
     <div
       className={
-        "sidebar bg-dark-purple max-h-full p-5 pt-8 relative duration-300 max-md:w-20 select-none overflow-y-scroll overflow-x-hidden " +
-        (open ? "w-[230px]" : "w-20")
+        "sidebar bg-dark-purple max-h-full p-5 pt-8 relative duration-300 max-md:w-20 select-none overflow-y-auto overflow-x-hidden " +
+        (open ? "w-[245px]" : "w-20")
       }
     >
       <BsArrowLeftShort
