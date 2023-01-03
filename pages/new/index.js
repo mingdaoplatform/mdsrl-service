@@ -136,7 +136,7 @@ export default function New() {
                       "wordcount",
                     ],
                     toolbar:
-                      "undo redo | casechange blocks sizes | bold italic underline Strikethrough backcolor | blockquote code | superscript subscript" + //styles
+                      "undo redo | casechange blocks sizes | bold italic underline Strikethrough forecolor backcolor | blockquote code | superscript subscript" + //styles
                       "bullist numlist checklist outdent indent | table help",
                     content_style:
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
