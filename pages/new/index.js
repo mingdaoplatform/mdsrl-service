@@ -38,9 +38,7 @@ export default function New() {
         <div className="flex flex-column p-3">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full">
             <form onSubmit={handleSubmit}>
-              <h1 className="text-dark-purple text-2xl font-bold ml-2">
-                新增問題
-              </h1>
+              <h1 className="text-dark-purple text-2xl font-bold">新增問題</h1>
               <div className="mt-4 flex gap-1 flex-col md:flex-row">
                 <div className="flex flex-col w-[25%] max-md:w-[100%]">
                   <label className="mb-1" htmlFor="category">
