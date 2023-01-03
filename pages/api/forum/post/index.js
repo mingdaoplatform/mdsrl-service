@@ -29,6 +29,7 @@ export default async function handler(req, res) {
           like: 0,
           reply: [],
           collect: 0,
+          last_reply: "0",
           last_update: Date.now(),
           created_time: Date.now(),
         });
