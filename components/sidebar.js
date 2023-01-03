@@ -151,7 +151,7 @@ export default function SideBar() {
               </span>
             </span>
           </li>
-          <li
+          {/* <li
             className={
               "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12 " +
               (router.pathname.startsWith("/setting") && "bg-light-white")
@@ -169,10 +169,10 @@ export default function SideBar() {
             >
               變更設定
             </span>
-          </li>
+          </li> */}
           <li
             className={
-              "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+              "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt- 2 " +
               (router.pathname.startsWith("/account") && "bg-light-white")
             }
             onClick={() => router.push("/account")}
