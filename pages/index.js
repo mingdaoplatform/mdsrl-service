@@ -16,7 +16,7 @@ export default function Home() {
           setPosts(response.data.data);
         }
       });
-  });
+  }, []);
   const PostHtml = [];
   if (posts.length === 0) {
     PostHtml.push(
