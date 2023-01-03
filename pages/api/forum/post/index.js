@@ -42,7 +42,7 @@ export default async function handler(req, res) {
       res.status(401).json({ message: "401: Invalid authentication token" });
     } else {
       await dbConnect();
-      const posts = await PostDB.find({}).sort({ id: 1 });
+      const posts = await PostDB.find({}).sort({ last_update: -1 });
       res
         .status(200)
         .json({ message: "200: Successful Get Posts", data: posts });

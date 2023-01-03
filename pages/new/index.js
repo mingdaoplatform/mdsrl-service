@@ -1,14 +1,43 @@
 import React, { useRef } from "react";
+import { useRouter } from "next/router";
 import { Editor } from "@tinymce/tinymce-react";
 
 export default function New() {
+  const router = useRouter();
   const editorRef = useRef(null);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const endpoint = "/api/forum/post";
+    const urlencoded = new URLSearchParams();
+
+    if (!event.target.content.value) return alert("你必須輸入內容！");
+
+    urlencoded.append("title", event.target.title.value);
+    urlencoded.append("content", event.target.content.value);
+    urlencoded.append("category", event.target.category.value);
+    urlencoded.append("subject", event.target.subject.value);
+
+    const options = {
+      method: "POST",
+      headers: {
+        key: process.env.NEXT_PUBLIC_POSTKEY,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: urlencoded,
+    };
+
+    const response = await fetch(endpoint, options);
+    const result = await response.json();
+
+    alert(`成功發布新的問題！`);
+    router.push("/");
+  };
   return (
     <>
       <main className="overflow-auto h-[calc(100vh-105px)] select-none">
         <div className="flex flex-column p-3">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full">
-            <form action="/api/forum/post" method="post">
+            <form onSubmit={handleSubmit}>
               <h1 className="text-dark-purple text-2xl font-bold ml-2">
                 新增問題
               </h1>
