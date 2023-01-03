@@ -144,9 +144,17 @@ export default function New() {
                 />
               </div>
               <div>
-                <p className="text-base opacity-20">
-                  <a className="text-lg ml-2">※</a>
-                  <a className="ml-2 text-sm">發送問題即表示您同意發文規則</a>
+                <p className="text-base opacity-60">
+                  <a className="text-base ml-2">※</a>
+                  <a className="ml-2 text-sm">發送問題即表示您同意</a>
+                  <a
+                    className="text-sm text-red-500 ml-1 hover:cursor-pointer"
+                    onClick={() => {
+                      router.push("/rule");
+                    }}
+                  >
+                    發文規則
+                  </a>
                 </p>
               </div>
               <div className="mt-4 text-center m">

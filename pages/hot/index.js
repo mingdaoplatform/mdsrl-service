@@ -16,7 +16,7 @@ export default function Hot() {
           setPosts(response.data.data);
         }
       });
-  });
+  }, []);
   const PostHtml = [];
   if (posts.length === 0) {
     PostHtml.push(
