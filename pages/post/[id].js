@@ -2,13 +2,13 @@ import React from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-export default function PostID(req, _) {
+export default function PostID() {
   const router = useRouter();
-  const { id } = router.query;
   const [post, setPost] = React.useState({});
+  const { id } = router.query;
   React.useEffect(() => {
     axios
-      .get(`/api/forum/post/?id=${id}`, {
+      .get(`/api/forum/post/${id}`, {
         headers: {
           key: process.env.NEXT_PUBLIC_POSTKEY,
         },
@@ -22,7 +22,7 @@ export default function PostID(req, _) {
   return (
     <>
       <main>
-        <div className="flex flex-column p-3">{post.title}</div>
+        <div className="flex flex-column p-3"></div>
       </main>
     </>
   );
