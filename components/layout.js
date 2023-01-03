@@ -18,7 +18,7 @@ export default function Layout({ children }) {
         </div>
         <div className="flex-1 flex-col">
           <Navbar />
-          {children}
+          <div className="bg-gray-100">{children}</div>
         </div>
       </div>
     </>
