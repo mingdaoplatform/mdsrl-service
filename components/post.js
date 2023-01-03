@@ -10,17 +10,17 @@ export default function Post(params) {
       <div className="mt-3">{parse(params.content)}</div>
       <div className="flex items-center justify-between mt-3 gap-2">
         <div className="flex bg-cyan-600/20 rounded-lg gap-2">
-          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors">
+          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors flex items-center">
             <AiOutlineHeart className="text-xl" />
-            <p className="text-center">{params.like}</p>
+            <p className="ml-1">{params.like}</p>
           </span>
-          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors">
+          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors flex items-center">
             <FiMessageCircle className="text-xl" />
-            <p className="text-center">{params.reply}</p>
+            <p className="ml-1">{params.reply}</p>
           </span>
-          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors">
+          <span className="p-2 hover:bg-cyan-600 rounded-lg cursor-pointer transition-colors flex items-center">
             <BsBookmark className="text-xl" />
-            <p className="text-center">{params.collect}</p>
+            <p className="ml-1">{params.collect}</p>
           </span>
         </div>
         <p
