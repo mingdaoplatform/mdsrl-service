@@ -1,14 +1,11 @@
 import React from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
 
 export default function PostID() {
-  const router = useRouter();
   const [post, setPost] = React.useState({});
-  const { id } = router.query;
   React.useEffect(() => {
     axios
-      .get(`/api/forum/post/${id}`, {
+      .get(`/api/forum/post/${window.location.href.split("/").pop()}`, {
         headers: {
           key: process.env.NEXT_PUBLIC_POSTKEY,
         },
