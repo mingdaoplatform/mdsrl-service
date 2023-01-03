@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="overflow-auto h-[calc(100vh-105px)]">
+      <main className="overflow-y-scroll h-[calc(100vh-105px)]  noscroll">
         {PostHtml}
         <br />
       </main>
