@@ -45,7 +45,7 @@ export default async function handler(req, res) {
       await dbConnect();
       let posts;
       if (sort === "hot") {
-        posts = await PostDB.find({}).sort({ like: -1 });
+        posts = await PostDB.find({}).sort({ last_reply: -1 });
       } else {
         posts = await PostDB.find({}).sort({ created_time: -1 });
       }

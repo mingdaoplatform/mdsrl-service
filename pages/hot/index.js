@@ -32,6 +32,9 @@ export default function Hot() {
             id={posts[i].id}
             title={posts[i].title}
             content={posts[i].content}
+            like={posts[i].like}
+            reply={posts[i].reply.length}
+            collect={posts[i].collect}
             solved={posts[i].solved}
             key={posts[i].id}
           />

@@ -21,6 +21,7 @@ export default async function handler(req, res) {
         if (!post) {
           res.status(404).json({ message: "404: Post Not Found" });
         } else {
+          post.last_reply = Date.now();
           post.reply.push({
             id: md5(Date.now().toString()),
             author: "TEST ACCOUNT",

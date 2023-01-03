@@ -22,6 +22,7 @@ const PostSchema = new mongoose.Schema({
     },
   ],
   collect: Number,
+  last_reply: String,
   last_update: String,
   created_time: String,
 });
