@@ -4,6 +4,7 @@ import md5 from "js-md5";
 
 export default async function handler(req, res) {
   const body = req.body;
+  const sort = req.query.sort;
   const headers = req.headers;
   const key = process.env.NEXT_PUBLIC_POSTKEY;
   if (req.method === "POST") {
@@ -42,7 +43,13 @@ export default async function handler(req, res) {
       res.status(401).json({ message: "401: Invalid authentication token" });
     } else {
       await dbConnect();
-      const posts = await PostDB.find({}).sort({ last_update: -1 });
+      let posts;
+      if (sort === "hot") {
+        posts = await PostDB.find({}).sort({ like: -1 });
+      } else {
+        posts = await PostDB.find({}).sort({ created_time: -1 });
+      }
+
       res
         .status(200)
         .json({ message: "200: Successful Get Posts", data: posts });

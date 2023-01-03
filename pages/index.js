@@ -1,4 +1,4 @@
-import Post from "../components/home/post";
+import Post from "../components/post";
 import React from "react";
 import axios from "axios";
 
