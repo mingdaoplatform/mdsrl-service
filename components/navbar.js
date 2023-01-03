@@ -8,7 +8,7 @@ export default function Navbar() {
         <input
           className="outline-none ring-0 border-0 focus:ring-0 bg-transparent h-6 text-base max-w-[800px] w-full flex-auto"
           type="text"
-          placeholder="搜尋文章..."
+          placeholder="搜尋問題..."
         />
       </div>
     </div>

@@ -6,4 +6,14 @@
   height: 100%;
   max-width: 100%;
   background-color: #f8f9fc;
+  overflow: -moz-hidden-unscrollable;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
