@@ -20,6 +20,7 @@ export default function New() {
                   <select
                     className="rounded-lg border-neutral-500 border-2"
                     id="category"
+                    name="category"
                   >
                     <option value="0">無分類</option>
                     <option value="1">國中部</option>
@@ -35,6 +36,7 @@ export default function New() {
                   <select
                     className="rounded-lg border-neutral-500 border-2"
                     id="subject"
+                    name="subject"
                   >
                     <option value="0">綜合</option>
                     <option value="1">物理</option>
@@ -62,15 +64,21 @@ export default function New() {
                     type="text"
                     className="rounded-lg border-neutral-500 border-2"
                     id="title"
+                    name="title"
+                    required
                   />
                 </div>
               </div>
               <div className="mt-4">
                 <Editor
+                  id="content"
+                  textareaName="content"
                   apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
                   onInit={(evt, editor) => (editorRef.current = editor)}
                   initialValue=""
                   init={{
+                    selector: "textarea",
+                    toolbar_mode: "scrolling",
                     height: 300,
                     menubar: false,
                     plugins: [
@@ -99,9 +107,8 @@ export default function New() {
                       "wordcount",
                     ],
                     toolbar:
-                      "undo redo | casechange blocks | bold italic backcolor | " +
-                      "alignleft aligncenter alignright alignjustify | " +
-                      "bullist numlist checklist outdent indent | removeformat | a11ycheck code table help",
+                      "undo redo | casechange blocks sizes | bold italic underline Strikethrough backcolor | blockquote code | superscript subscript" + //styles
+                      "bullist numlist checklist outdent indent | table help",
                     content_style:
                       "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
                   }}
@@ -113,8 +120,11 @@ export default function New() {
                   <a className="ml-2 text-sm">發送問題即表示您同意發文規則</a>
                 </p>
               </div>
-              <div className="mt-2 text-center m">
-                <button className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white">
+              <div className="mt-4 text-center m">
+                <button
+                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white"
+                  type="submit"
+                >
                   送出問題
                 </button>
               </div>
