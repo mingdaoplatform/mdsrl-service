@@ -28,6 +28,7 @@ export default async function handler(req, res) {
             author_id: "1234567890",
             content: req.body.content,
             floor: "B" + (post.reply.length + 1).toString(),
+            delete: false,
             last_update: Date.now(),
             created_time: Date.now(),
           });

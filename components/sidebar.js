@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FaFire } from "react-icons/fa";
 import { MdNoteAdd } from "react-icons/md";
 import { IoIosTime } from "react-icons/io";
-import { AiFillCalculator } from "react-icons/ai";
+import { AiFillCalculator, AiFillFileText } from "react-icons/ai";
 import {
   BsArrowLeftShort,
   BsFillLayersFill,
@@ -151,6 +151,25 @@ export default function SideBar() {
               </span>
             </span>
           </li>
+          <li
+            className={
+              "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
+              (router.pathname.startsWith("/rule") && "bg-light-white")
+            }
+            onClick={() => router.push("/rule")}
+          >
+            <span className="text-2xl block float-left">
+              <AiFillFileText />
+            </span>
+            <span
+              className={
+                "text-base font-medium flex-1 duration-200 truncate " +
+                (!open && "hidden")
+              }
+            >
+              發文規則
+            </span>
+          </li>
           {/* <li
             className={
               "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-12 " +
@@ -172,7 +191,7 @@ export default function SideBar() {
           </li> */}
           <li
             className={
-              "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt- 2 " +
+              "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2 " +
               (router.pathname.startsWith("/account") && "bg-light-white")
             }
             onClick={() => router.push("/account")}
