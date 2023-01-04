@@ -66,18 +66,23 @@ export default function PostID() {
   } else {
     for (var i = 0; i < replies.length; i++) {
       ReplyHtml.push(
-        <div className="ml-1 text-dark-purple/40 mt-10" key={replies[i].id}>
-          <h1 className="text-lg">{replies[i].author}</h1>
-          <div className="text-sm flex mb-4">
-            <p className="text-dark-purple/75">{replies[i].floor}</p>
-            <p>｜</p>
-            <p>
-              最後編輯時間:{timestamp2string(Number(replies[i].last_update))}
-            </p>
-          </div>
-          <hr />
-          <div className="mt-4 mb-4 text-dark-purple">
-            {parse(replies[i].content)}
+        <div
+          className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple/40"
+          key={replies[i].id}
+        >
+          <div className="ml-1 text-dark-purple/40">
+            <h1 className="text-lg">{replies[i].author}</h1>
+            <div className="text-sm flex mb-4">
+              <p className="text-dark-purple/75">{replies[i].floor}</p>
+              <p>｜</p>
+              <p>
+                最後編輯時間:{timestamp2string(Number(replies[i].last_update))}
+              </p>
+            </div>
+            <hr />
+            <div className="mt-4 mb-ㄉ text-dark-purple">
+              {parse(replies[i].content)}
+            </div>
           </div>
         </div>
       );
