@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import React, { useRef } from "react";
 import { useRouter } from "next/router";
 import { Editor } from "@tinymce/tinymce-react";
@@ -29,8 +30,27 @@ export default function New() {
     const response = await fetch(endpoint, options);
     const result = await response.json();
 
-    alert(`成功發布新的問題！`);
-    router.push("/");
+    Swal.fire({
+      title: "成功送出新的問題！",
+      icon: "success",
+      confirmButtonText: "確認",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: "#081A51",
+      customClass: {
+        container: "select-none",
+      },
+      focusConfirm: false,
+      background: "#fff url(/images/trees.png)",
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/nyan-cat.gif")
+        left top
+        no-repeat
+      `,
+    }).then((resault) => {
+      router.push("/");
+    });
   };
   return (
     <>

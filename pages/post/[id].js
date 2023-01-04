@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 import React, { useRef } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
@@ -54,7 +55,25 @@ export default function PostID() {
     const response = await fetch(endpoint, options);
     const result = await response.json();
     setReplyCount(replyCount + 1);
-    alert(`成功發送新的留言！`);
+    Swal.fire({
+      title: "成功送出新的留言！",
+      icon: "success",
+      confirmButtonText: "確認",
+      allowEscapeKey: false,
+      allowOutsideClick: false,
+      confirmButtonColor: "#081A51",
+      customClass: {
+        container: "select-none",
+      },
+      focusConfirm: false,
+      background: "#fff url(/images/trees.png)",
+      backdrop: `
+        rgba(0,0,123,0.4)
+        url("/nyan-cat.gif")
+        left top
+        no-repeat
+      `,
+    });
   };
 
   const ReplyHtml = [];
@@ -190,7 +209,7 @@ export default function PostID() {
               </div>
               <div className="mt-4 text-center m">
                 <button
-                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white hover:cursor-pointer disabled:hover:cursor-default disabled:bg-dark-purple/80"
+                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white hover:cursor-pointer disabled:hover:cursor-default disabled:bg-dark-purple/30"
                   type="submit"
                   disabled={post.solved}
                 >
