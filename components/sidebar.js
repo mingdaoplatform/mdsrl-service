@@ -206,6 +206,9 @@ export default function SideBar() {
               }
             >
               我的帳號
+              <span className="bg-gray-500 text-white text-sm font-medium mr-2 px-3 py-0.5 rounded ml-2">
+                Dev
+              </span>
             </span>
           </li>
         </ul>
