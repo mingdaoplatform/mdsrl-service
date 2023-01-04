@@ -1,12 +1,14 @@
 import axios from "axios";
 import React, { useRef } from "react";
 import parse from "html-react-parser";
+import { useRouter } from "next/router";
 import { BsBookmark } from "react-icons/bs";
 import { Editor } from "@tinymce/tinymce-react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 
 export default function PostID() {
+  const router = useRouter();
   const editorRef = useRef(null);
   const [post, setPost] = React.useState({});
   const [reply, setReply] = React.useState(null);
@@ -118,11 +120,12 @@ export default function PostID() {
             <form onSubmit={handleSubmit}>
               <h1 className="text-2xl ml-1 mb-4">留言</h1>
               <Editor
+                disabled={post.solved}
                 id="content"
                 textareaName="content"
                 apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
                 onInit={(evt, editor) => (editorRef.current = editor)}
-                initialValue=""
+                initialValue={post.solved ? "問題已解決不再接受留言" : ""}
                 init={{
                   selector: "textarea",
                   toolbar_mode: "scrolling",
@@ -176,8 +179,9 @@ export default function PostID() {
               </div>
               <div className="mt-4 text-center m">
                 <button
-                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white"
+                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white hover:cursor-pointer disabled:hover:cursor-default disabled:bg-dark-purple/80"
                   type="submit"
+                  disabled={post.solved}
                 >
                   送出留言
                 </button>
