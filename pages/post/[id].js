@@ -6,7 +6,7 @@ import { BsBookmark } from "react-icons/bs";
 import { Editor } from "@tinymce/tinymce-react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
-import { timestamp2string } from "../utils/time";
+import { timestamp2string } from "../../utils/Timestamp2String";
 
 export default function PostID() {
   const router = useRouter();
