@@ -139,7 +139,7 @@ export default function PostID() {
                 init={{
                   selector: "textarea",
                   toolbar_mode: "scrolling",
-                  height: 150,
+                  height: 155,
                   menubar: false,
                   plugins: [
                     "a11ychecker",
