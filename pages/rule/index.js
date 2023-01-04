@@ -4,8 +4,8 @@ export default function Rule() {
       <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none">
         <div className="flex flex-column p-3 ">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
-            <h1 className="text-5xl font-bolf mt-2 ml-1">發文規則</h1>
-            <div className="text-xl font-bolf mt-7 ml-3">
+            <h1 className="text-2xl font-semibold font-bolf mt-2">發文規則</h1>
+            <div className="text-xl font-bolf mt-7">
               <p className="mt-2">1.禁止任何垃圾內容</p>
               <p className="mt-2">2.禁止任何複製文內容</p>
               <p className="mt-2">3.禁止任何霸凌或騷擾內容</p>

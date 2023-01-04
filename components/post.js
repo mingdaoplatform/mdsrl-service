@@ -8,7 +8,7 @@ export default function Post(params) {
   const router = useRouter();
   return (
     <div
-      className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full noscroll select-none"
+      className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full noscroll select-none cursor-pointer"
       onClick={() => {
         router.push(`/post/${params.id}`);
       }}

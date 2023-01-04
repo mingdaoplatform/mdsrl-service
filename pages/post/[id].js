@@ -100,9 +100,9 @@ export default function PostID() {
             <div className="mt-4 ml-1">
               <h1 className="text-3xl text-dark-purple">{post.title}</h1>
             </div>
-            <div className="mt-3 ml-1">{content}</div>
-            <div className="flex rounded-lg ml-1 text-dark-purple">
-              <span className="p-2 rounded-lg transition-colors flex items-center opacity-30">
+            <div className="mt-3 ml-1 text-dark-purple">{content}</div>
+            <div className="flex mt-2 rounded-lg text-dark-purple">
+              <span className="p-1 rounded-lg transition-colors flex items-center opacity-30">
                 <AiOutlineHeart className="text-xl" />
                 <p className="ml-1">{post.like}</p>
               </span>
