@@ -10,6 +10,7 @@ export default function PostID() {
   const editorRef = useRef(null);
   const [post, setPost] = React.useState({});
   const [reply, setReply] = React.useState(null);
+  const [replies, setReplies] = React.useState([]);
   const [content, setContent] = React.useState(null);
   React.useEffect(() => {
     axios
@@ -22,10 +23,62 @@ export default function PostID() {
         if (response.data !== undefined) {
           setPost(response.data.data);
           setReply(response.data.data.reply.length);
+          setReplies(response.data.data.reply);
           setContent(parse(response.data.data.content.toString()));
         }
       });
   }, []);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const endpoint = `/api/forum/reply/${post.id}`;
+    const urlencoded = new URLSearchParams();
+
+    if (!event.target.content.value) return alert("你必須輸入內容！");
+
+    urlencoded.append("content", event.target.content.value);
+
+    const options = {
+      method: "POST",
+      headers: {
+        key: process.env.NEXT_PUBLIC_POSTKEY,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: urlencoded,
+    };
+
+    const response = await fetch(endpoint, options);
+    const result = await response.json();
+
+    alert(`成功發送新的留言！`);
+  };
+
+  const ReplyHtml = [];
+  if (replies.length === 0) {
+    ReplyHtml.push(
+      <h1 className="text-center mt-5 text-3xl" key="No Reply">
+        沒有任何留言
+      </h1>
+    );
+  } else {
+    for (var i = 0; i < replies.length; i++) {
+      ReplyHtml.push(
+        <div className="ml-1 text-dark-purple/40 mt-10" key={replies[i].id}>
+          <h1 className="text-lg">{replies[i].author}</h1>
+          <div className="text-sm flex mb-4">
+            <p className="text-dark-purple/75">{replies[i].floor}</p>
+            <p>｜</p>
+            <p>最後編輯時間:{replies[i].last_update}</p>
+          </div>
+          <hr />
+          <div className="mt-4 mb-4 text-dark-purple">
+            {parse(replies[i].content)}
+          </div>
+        </div>
+      );
+    }
+  }
+
   return (
     <>
       <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none">
@@ -36,7 +89,10 @@ export default function PostID() {
               <div className="text-sm flex">
                 <p className="text-dark-purple/75">1F</p>
                 <p>｜</p>
-                <p>最後編輯時間:{post.last_update}</p>
+                <p>
+                  最後編輯時間:
+                  {post.last_update}
+                </p>
               </div>
             </div>
             <div className="mt-4 ml-1">
@@ -59,53 +115,78 @@ export default function PostID() {
             </div>
           </div>
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
-            <h1 className="text-2xl ml-1 mb-4">留言</h1>
-            <Editor
-              id="content"
-              textareaName="content"
-              apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
-              onInit={(evt, editor) => (editorRef.current = editor)}
-              initialValue=""
-              init={{
-                selector: "textarea",
-                toolbar_mode: "scrolling",
-                height: 150,
-                menubar: false,
-                plugins: [
-                  "a11ychecker",
-                  "advlist",
-                  "advcode",
-                  "advtable",
-                  "autolink",
-                  "checklist",
-                  "export",
-                  "lists",
-                  "link",
-                  "image",
-                  "charmap",
-                  "preview",
-                  "anchor",
-                  "searchreplace",
-                  "visualblocks",
-                  "powerpaste",
-                  "fullscreen",
-                  "formatpainter",
-                  "insertdatetime",
-                  "media",
-                  "table",
-                  "help",
-                  "wordcount",
-                ],
-                toolbar:
-                  "undo redo | casechange blocks sizes | bold italic underline Strikethrough forecolor backcolor | blockquote code | superscript subscript" + //styles
-                  "bullist numlist checklist outdent indent | table help",
-                content_style:
-                  "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-              }}
-            />
+            <form onSubmit={handleSubmit}>
+              <h1 className="text-2xl ml-1 mb-4">留言</h1>
+              <Editor
+                id="content"
+                textareaName="content"
+                apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
+                onInit={(evt, editor) => (editorRef.current = editor)}
+                initialValue=""
+                init={{
+                  selector: "textarea",
+                  toolbar_mode: "scrolling",
+                  height: 150,
+                  menubar: false,
+                  plugins: [
+                    "a11ychecker",
+                    "advlist",
+                    "advcode",
+                    "advtable",
+                    "autolink",
+                    "checklist",
+                    "export",
+                    "lists",
+                    "link",
+                    "image",
+                    "charmap",
+                    "preview",
+                    "anchor",
+                    "searchreplace",
+                    "visualblocks",
+                    "powerpaste",
+                    "fullscreen",
+                    "formatpainter",
+                    "insertdatetime",
+                    "media",
+                    "table",
+                    "help",
+                    "wordcount",
+                  ],
+                  toolbar:
+                    "undo redo | casechange blocks sizes | bold italic underline Strikethrough forecolor backcolor | blockquote code | superscript subscript" + //styles
+                    "bullist numlist checklist outdent indent | table help",
+                  content_style:
+                    "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+                }}
+              />
+              <div>
+                <p className="text-base opacity-60">
+                  <a className="text-base ml-2">※</a>
+                  <a className="ml-2 text-sm">發送留言即表示您同意</a>
+                  <a
+                    className="text-sm text-red-500 ml-1 hover:cursor-pointer"
+                    onClick={() => {
+                      router.push("/rule");
+                    }}
+                  >
+                    發文規則
+                  </a>
+                </p>
+              </div>
+              <div className="mt-4 text-center m">
+                <button
+                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white"
+                  type="submit"
+                >
+                  送出留言
+                </button>
+              </div>
+            </form>
           </div>
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
             <h1 className="text-2xl ml-1 mb-4">所有留言</h1>
+            {ReplyHtml}
           </div>
         </div>
       </main>
