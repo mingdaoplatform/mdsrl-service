@@ -6,6 +6,7 @@ import { BsBookmark } from "react-icons/bs";
 import { Editor } from "@tinymce/tinymce-react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
+import { timestamp2string } from "../utils/time";
 
 export default function PostID() {
   const router = useRouter();
@@ -70,7 +71,9 @@ export default function PostID() {
           <div className="text-sm flex mb-4">
             <p className="text-dark-purple/75">{replies[i].floor}</p>
             <p>｜</p>
-            <p>最後編輯時間:{replies[i].last_update}</p>
+            <p>
+              最後編輯時間:{timestamp2string(Number(replies[i].last_update))}
+            </p>
           </div>
           <hr />
           <div className="mt-4 mb-4 text-dark-purple">
@@ -83,7 +86,7 @@ export default function PostID() {
 
   return (
     <>
-      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none">
+      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll ">
         <div className="flex-column p-3 ">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple/40">
             <div className="ml-1">
@@ -93,7 +96,7 @@ export default function PostID() {
                 <p>｜</p>
                 <p>
                   最後編輯時間:
-                  {post.last_update}
+                  {" " + timestamp2string(Number(post.last_update))}
                 </p>
               </div>
             </div>
