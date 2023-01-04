@@ -1,24 +1,4 @@
-import Swal from "sweetalert2";
 export default function Rule() {
-  Swal.fire({
-    title: "成功送出新的問題！",
-    icon: "success",
-    confirmButtonText: "確認",
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    confirmButtonColor: "#081A51",
-    customClass: {
-      container: "select-none",
-    },
-    focusConfirm: false,
-    background: "#fff url(/images/trees.png)",
-    backdrop: `
-      rgba(0,0,123,0.4)
-      url("/nyan-cat.gif")
-      left top
-      no-repeat
-    `,
-  });
   return (
     <>
       <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none sha">
