@@ -41,7 +41,7 @@ export default function New() {
         container: "select-none",
       },
       focusConfirm: false,
-      background: "#fff url(/images/trees.png)",
+      background: "#fff url(/trees.png)",
       backdrop: `
         rgba(0,0,123,0.4)
         url("/nyan-cat.gif")
