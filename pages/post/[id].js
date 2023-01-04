@@ -13,6 +13,7 @@ export default function PostID() {
   const editorRef = useRef(null);
   const [post, setPost] = React.useState({});
   const [reply, setReply] = React.useState(null);
+  const [replyCount, setReplyCount] = React.useState(0);
   const [replies, setReplies] = React.useState([]);
   const [content, setContent] = React.useState(null);
   React.useEffect(() => {
@@ -30,7 +31,7 @@ export default function PostID() {
           setContent(parse(response.data.data.content.toString()));
         }
       });
-  }, []);
+  }, [replyCount]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -52,7 +53,7 @@ export default function PostID() {
 
     const response = await fetch(endpoint, options);
     const result = await response.json();
-
+    setReplyCount(replyCount + 1);
     alert(`成功發送新的留言！`);
   };
 
