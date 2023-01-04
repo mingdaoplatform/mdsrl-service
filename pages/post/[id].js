@@ -58,7 +58,7 @@ export default function PostID() {
   const ReplyHtml = [];
   if (replies.length === 0) {
     ReplyHtml.push(
-      <h1 className="text-center mt-5 text-3xl" key="No Reply">
+      <h1 className="text-center mt-5 text-3xl mb-4" key="No Reply">
         沒有任何留言
       </h1>
     );
@@ -125,7 +125,9 @@ export default function PostID() {
                 textareaName="content"
                 apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
                 onInit={(evt, editor) => (editorRef.current = editor)}
-                initialValue={post.solved ? "問題已解決不再接受留言" : ""}
+                initialValue={
+                  post.solved ? "<h1>問題已解決不再接受留言！</h1>" : ""
+                }
                 init={{
                   selector: "textarea",
                   toolbar_mode: "scrolling",
