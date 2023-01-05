@@ -18,7 +18,7 @@ export default function SideBar() {
   return (
     <div
       className={
-        "bg-dark-purple min-h-full p-5 pt-8 relative duration-300 max-md:w-20 select-none " +
+        "bg-dark-purple min-h-[100vh] max-h-[100vh] p-5 pt-8 relative duration-300 max-md:w-20 select-none " +
         (open ? "w-[245px]" : "w-20")
       }
     >
