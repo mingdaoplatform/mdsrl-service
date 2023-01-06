@@ -18,7 +18,7 @@ export default function Layout({ children }) {
         </div>
         <div className="flex-1 flex-col max-md:max-h-[calc(100vh-60px)]">
           <Navbar />
-          <div className="bg-gray-100 max-md:max-h-[calc(100svh-60px-105px)] max-md:h-[calc(100svh-60px-105px)] md:max-h-[calc(100svh-105px)] md:h-[calc(100svh-105px)]">
+          <div className="bg-gray-100 max-md:max-h-[calc(100svh-60px-105px)] max-md:h-[calc(100svh-70px-105px)] md:max-h-[calc(100svh-105px)] md:h-[calc(100svh-105px)]">
             {children}
           </div>
         </div>

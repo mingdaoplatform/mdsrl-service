@@ -1,7 +1,7 @@
 export default function Rule() {
   return (
     <>
-      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none max-md:h-[calc(100svh-60px-105px)]">
+      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll select-none max-md:h-[calc(100svh-70px-105px)]">
         <div className="flex flex-column p-3 ">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
             <h1 className="text-2xl font-semibold font-bolf mt-2">發文規則</h1>
@@ -23,14 +23,10 @@ export default function Rule() {
               <p className="mt-2">
                 9.網站管理者擁有對所有問題、貼文、留言內容進行審核刪除的權利，不包含編輯內容
               </p>
-              <div className="inline-flex mt-5">
-                <p className="mt-2 text-red-500 float-left">
-                  請注意！以上內容網站管理者擁有完全編輯權。
-                </p>
-                <p className="mt-2 text-black absolute right-10">
-                  最後編輯：2023年1月3日 22時22分
-                </p>
-              </div>
+              <p className="mt-10 text-red-500">
+                請注意！以上內容網站管理者擁有完全編輯權。
+              </p>
+              <p className="mt-4 text-black">最後編輯：2023年1月3日 22時22分</p>
             </div>
           </div>
         </div>
