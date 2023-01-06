@@ -111,7 +111,7 @@ export default function PostID() {
 
   return (
     <>
-      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll max-md:h-[calc(100svh-90px-105px)]">
+      <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll max-md:h-[calc(100svh-60px-105px)]">
         <div className="flex-column p-3 ">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple/40">
             <div className="ml-1">
