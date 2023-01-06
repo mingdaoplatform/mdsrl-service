@@ -48,7 +48,7 @@ export default function Footer() {
             討論問題
           </span>
         </div>
-        <li
+        <div
           className={
             "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
             (router.pathname.startsWith("/rule") && "bg-light-white")
@@ -63,8 +63,8 @@ export default function Footer() {
           >
             發文規則
           </span>
-        </li>
-        <li
+        </div>
+        <div
           className={
             "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
             (router.pathname.startsWith("/account") && "bg-light-white")
@@ -79,7 +79,7 @@ export default function Footer() {
           >
             我的帳號
           </span>
-        </li>
+        </div>
       </div>
     </div>
   );
