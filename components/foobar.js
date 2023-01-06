@@ -27,10 +27,7 @@ export default function Footer() {
             <MdNoteAdd />
           </span>
           <span
-            className={
-              "text-base font-medium flex-1 duration-200 truncate " +
-              (!open && "hidden ")
-            }
+            className={"text-base font-medium flex-1 duration-200 truncate "}
           >
             建立問題
           </span>
@@ -46,10 +43,7 @@ export default function Footer() {
             <MdArticle />
           </span>
           <span
-            className={
-              "text-base font-medium flex-1 duration-200 truncate " +
-              (!open && "hidden")
-            }
+            className={"text-base font-medium flex-1 duration-200 truncate "}
           >
             討論問題
           </span>
@@ -65,10 +59,7 @@ export default function Footer() {
             <AiFillFileText />
           </span>
           <span
-            className={
-              "text-base font-medium flex-1 duration-200 truncate " +
-              (!open && "hidden")
-            }
+            className={"text-base font-medium flex-1 duration-200 truncate"}
           >
             發文規則
           </span>
@@ -84,10 +75,7 @@ export default function Footer() {
             <BsFillPersonFill />
           </span>
           <span
-            className={
-              "text-base font-medium flex-1 duration-200 truncate " +
-              (!open && "hidden")
-            }
+            className={"text-base font-medium flex-1 duration-200 truncate"}
           >
             我的帳號
           </span>
