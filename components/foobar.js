@@ -14,7 +14,7 @@ import {
 export default function Footer() {
   const router = useRouter();
   return (
-    <div className="bg-dark-purple h-[70px] items-center justify-between flex w-[100vw] text-white select-none overflow-auto">
+    <div className="bg-dark-purple h-[70px] items-center justify-between flex w-[100vw] text-white select-none overflow-auto p-1 gap-1">
       <div
         className={
           "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
