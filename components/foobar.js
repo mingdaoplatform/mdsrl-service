@@ -14,60 +14,76 @@ import {
 export default function Footer() {
   const router = useRouter();
   return (
-    <div className="bg-dark-purple h-[70px] items-center justify-between flex w-[100vw] text-white select-none overflow-auto p-1 gap-1">
+    <div className="bg-dark-purple focus:outline-none h-[70px] items-center justify-between flex w-[100vw] text-white select-none overflow-auto p-1 gap-1">
       <div
         className={
-          "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
+          "text-gray-300 select-none text-sm flex focus:outline-none items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
           (router.pathname.startsWith("/new") && "bg-light-white")
         }
         onClick={() => router.push("/new")}
       >
-        <span className="text-2xl block float-left">
+        <span className="text-2xl select-none block float-left">
           <MdNoteAdd />
         </span>
-        <span className={"text-base font-medium flex-1 duration-200 truncate "}>
+        <span
+          className={
+            "text-base select-none font-medium flex-1 duration-200 truncate "
+          }
+        >
           建立問題
         </span>
       </div>
       <div
         className={
-          "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
+          "text-gray-300 select-none text-sm focus:outline-none flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
           (router.pathname === "/" && "bg-light-white")
         }
         onClick={() => router.push("/")}
       >
-        <span className="text-2xl block float-left">
+        <span className="text-2xl select-none block float-left">
           <MdArticle />
         </span>
-        <span className={"text-base font-medium flex-1 duration-200 truncate "}>
+        <span
+          className={
+            "text-base select-none font-medium flex-1 duration-200 truncate "
+          }
+        >
           討論問題
         </span>
       </div>
       <div
         className={
-          "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
+          "text-gray-300 select-none text-sm flex focus:outline-none items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
           (router.pathname.startsWith("/rule") && "bg-light-white")
         }
         onClick={() => router.push("/rule")}
       >
-        <span className="text-2xl block float-left">
+        <span className="text-2xl select-none block float-left">
           <AiFillFileText />
         </span>
-        <span className={"text-base font-medium flex-1 duration-200 truncate"}>
+        <span
+          className={
+            "text-base select-none font-medium flex-1 duration-200 truncate"
+          }
+        >
           發文規則
         </span>
       </div>
       <div
         className={
-          "text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
+          "text-gray-300 select-none text-sm flex focus:outline-none items-center gap-x-4 cursor-pointer w-full p-1 hover:bg-light-white rounded-md mt-1 flex-col " +
           (router.pathname.startsWith("/account") && "bg-light-white")
         }
         onClick={() => router.push("/account")}
       >
-        <span className="text-2xl block float-left">
+        <span className="text-2xl select-none block float-left">
           <BsFillPersonFill />
         </span>
-        <span className={"text-base font-medium flex-1 duration-200 truncate"}>
+        <span
+          className={
+            "text-base select-none font-medium flex-1 duration-200 truncate"
+          }
+        >
           我的帳號
         </span>
       </div>
