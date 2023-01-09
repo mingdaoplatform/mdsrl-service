@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 export default function FourZeroFour() {
   const router = useRouter();
   return (
-    <div class="flex items-center justify-center h-[calc(100vh-105px)] bg-fixed bg-cover bg-bottom text-center select-none">
-      <h1 className="text-9xl text-red-500 flex flex-col">
+    <div className="flex items-center justify-center h-[calc(100vh-105px)] bg-fixed bg-cover bg-bottom text-center select-none">
+      <h1 className="flex flex-col text-red-500 text-9xl">
         404
         <br />
         <p className="text-lg text-center">看來你跑到了一個不存在的地方</p>
