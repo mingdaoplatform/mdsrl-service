@@ -12,8 +12,8 @@ export default function Layout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="flex h-[-webkit-fill-available] max-h-[-webkit-fill-available]">
-        <div className="sidebar overflow-y-scroll overflow-x-hidden max-md:hidden">
+      <div className="flex h-[-webkit-fill-available] max-h-[-webkit-fill-available] overflow-hidden">
+        <div className="overflow-x-hidden overflow-y-scroll sidebar max-md:hidden">
           <Sidebar />
         </div>
         <div className="flex-1 flex-col max-md:max-h-[calc(100vh-60px)]">
