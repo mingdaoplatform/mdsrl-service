@@ -1,10 +1,36 @@
+import { useRouter } from "next/router";
 import Post from "../components/post";
+import Swal from "sweetalert2";
 import React from "react";
 import axios from "axios";
 
 export default function Home() {
+  const router = useRouter();
+  const { error } = router.query;
   const [posts, setPosts] = React.useState([]);
   React.useEffect(() => {
+    if (error && error === "NotMD") {
+      Swal.fire({
+        title: "登入失敗",
+        text: "您使用的帳號並非明道中學的老師或學生！",
+        icon: "error",
+        confirmButtonText: "確認",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        confirmButtonColor: "#081A51",
+        customClass: {
+          container: "select-none",
+        },
+        focusConfirm: false,
+        background: "#fff url(/trees.png)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/nyan-cat.gif")
+          left top
+          no-repeat
+        `,
+      });
+    }
     axios
       .get(`/api/forum/post`, {
         headers: {
@@ -16,18 +42,18 @@ export default function Home() {
           setPosts(response.data.data);
         }
       });
-  }, []);
+  }, [error]);
   const PostHtml = [];
   if (posts.length === 0) {
     PostHtml.push(
-      <h1 className="text-center mt-5 text-3xl" key="No Posts">
+      <h1 className="mt-5 text-3xl text-center" key="No Posts">
         沒有任何討論內容
       </h1>
     );
   } else {
     for (var i = 0; i < posts.length; i++) {
       PostHtml.push(
-        <div className="flex flex-column p-3" key={posts[i].id}>
+        <div className="flex p-3 flex-column" key={posts[i].id}>
           <Post
             id={posts[i].id}
             title={posts[i].title}

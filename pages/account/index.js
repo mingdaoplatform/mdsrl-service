@@ -10,7 +10,7 @@ export default function Account() {
             <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
               <div className="flex text-2xl flex-column">Account</div>
               Signed in as {session.user.email} <br />
-              <button onClick={() => signOut()}>Sign out</button>
+              <button onClick={() => signOut()}>登出</button>
             </div>
           </div>
         </main>
