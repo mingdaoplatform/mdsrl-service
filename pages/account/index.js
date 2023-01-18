@@ -37,10 +37,8 @@ export default function Account() {
               </div>
 
               <div className="mt-3">
-                <div className="w-full h-20">
-                  <img src={session.user.image} className="w-full h-20" />
-                </div>
-                <div className="flex mt-2">
+                <div className="w-full h-[300px] bg-cover bg-center rounded bg-no-repeat bg-[url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')]"></div>
+                <div className="flex mt-4 items-center">
                   <Image
                     src={session.user.image}
                     alt="user-avatar"
@@ -48,18 +46,19 @@ export default function Account() {
                     height={64}
                     className="rounded-full"
                   />
-                  <div className="block my-auto ml-5 text-2xl font-black">
-                    <p>{session.user.name}</p>
+                  <div className="p-1 flex-col items-start justify-center">
+                    <p className="text-xl">{session.user.name}</p>
+                    <div className=" text-sky-900/50">{session.user.email}</div>
                   </div>
+
+                  {/* 歡迎回來，{session.user.name} <br />*/}
+                  {/* <button
+                    onClick={() => signOut()}
+                    className="px-3 py-1.5 text-white rounded bg-dark-purple mt-2"
+                  >
+                    登出
+                  </button> */}
                 </div>
-                <div className="mt-2">{session.user.email}</div>
-                {/* 歡迎回來，{session.user.name} <br />*/}
-                {/* <button
-                  onClick={() => signOut()}
-                  className="px-3 py-1.5 text-white rounded bg-dark-purple mt-2"
-                >
-                  登出
-                </button> */}
               </div>
             </div>
           </div>
