@@ -1,9 +1,10 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { sendError } from "next/dist/server/api-utils";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Account() {
   const { data: session } = useSession();
+  const { user, setUser } = useState(null);
   if (session) {
     return (
       <>
@@ -13,10 +14,10 @@ export default function Account() {
               <h1 className="mt-2 text-2xl font-semibold font-bolf">
                 我的帳號
               </h1>
-              <div className="w-full h-12 mt-2 bg-red-300 border-white rounded">
-                <a className="block m-auto text-lg font-black text-center">
+              <div className="flex w-full h-12 mt-2 bg-red-300 border-white rounded">
+                <p className="block m-auto text-lg font-black text-center">
                   我的帳號尚未開放編輯功能
-                </a>
+                </p>
               </div>
 
               <div className="mt-3">
