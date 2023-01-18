@@ -13,6 +13,12 @@ export default function Account() {
               <h1 className="mt-2 text-2xl font-semibold font-bolf">
                 我的帳號
               </h1>
+              <div className="w-full h-12 mt-2 bg-red-300 border-white rounded">
+                <a className="block m-auto text-lg font-black text-center">
+                  我的帳號尚未開放編輯功能
+                </a>
+              </div>
+
               <div className="mt-3">
                 <div className="w-full h-20">
                   <img src={session.user.image} className="w-full h-20" />
