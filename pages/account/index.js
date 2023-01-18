@@ -1,10 +1,27 @@
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 
 export default function Account() {
   const { data: session } = useSession();
-  const { user, setUser } = useState(null);
+  const [user, setUser] = useState(null);
+  React.useEffect(() => {
+    if (session) {
+      axios
+        .get(`/api/user/${session?.user.email}`, {
+          headers: {
+            key: process.env.NEXT_PUBLIC_POSTKEY,
+          },
+        })
+        .then((response) => {
+          if (response.data !== undefined) {
+            setUser(response.data.data);
+          }
+        });
+    }
+  }, [session]);
+  console.log(user);
   if (session) {
     return (
       <>
