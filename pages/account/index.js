@@ -35,18 +35,23 @@ export default function Account() {
               </div>
 
               <div className="mt-3">
-                <div className="w-full h-[300px] bg-cover bg-center rounded bg-no-repeat bg-[url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')]"></div>
+                <div className="w-full h-[300px] ">
+                  <img
+                    src={user?.avatar}
+                    className="rounded w-full h-[300px]"
+                  ></img>
+                </div>
                 <div className="flex mt-4 items-center">
                   <Image
-                    src={session.user.image}
+                    src={user?.avatar}
                     alt="user-avatar"
                     width={64}
                     height={64}
                     className="rounded-full"
                   />
                   <div className="p-1 flex-col items-start justify-center">
-                    <p className="text-xl">{session.user.name}</p>
-                    <div className=" text-sky-900/50">{session.user.email}</div>
+                    <p className="text-xl">{user?.name}</p>
+                    <div className=" text-sky-900/50">{user?.email}</div>
                   </div>
 
                   {/* 歡迎回來，{session.user.name} <br />*/}
