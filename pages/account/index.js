@@ -7,19 +7,17 @@ export default function Account() {
   const { data: session } = useSession();
   const [user, setUser] = useState(null);
   React.useEffect(() => {
-    if (session) {
-      axios
-        .get(`/api/user/${session?.user.email}`, {
-          headers: {
-            key: process.env.NEXT_PUBLIC_POSTKEY,
-          },
-        })
-        .then((response) => {
-          if (response.data !== undefined) {
-            setUser(response.data.data);
-          }
-        });
-    }
+    axios
+      .get(`/api/user/${session?.user.email}`, {
+        headers: {
+          key: process.env.NEXT_PUBLIC_POSTKEY,
+        },
+      })
+      .then((response) => {
+        if (response.data !== undefined) {
+          setUser(response.data.data);
+        }
+      });
   }, []);
   if (session) {
     return (

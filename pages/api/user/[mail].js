@@ -15,13 +15,14 @@ export default async function handler(req, res) {
       await dbConnect();
 
       user = await UserDB.findOne({ mail: mail });
-      if (!user) {
-        res.status(404).json({ message: "404: User Not Found" });
-      } else {
-        res
-          .status(200)
-          .json({ message: "200: Successful Get User", data: user });
-      }
+      res.status(200).json({ message: "200: Successful Get User", data: user });
+      //   if (!user) {
+      //     res.status(404).json({ message: "404: User Not Found" });
+      //   } else {
+      //     res
+      //       .status(200)
+      //       .json({ message: "200: Successful Get User", data: user });
+      //   }
     }
   } else {
     res.status(405).json({ message: "405: Method Not Allow" });
