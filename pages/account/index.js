@@ -20,8 +20,7 @@ export default function Account() {
           }
         });
     }
-  }, [session]);
-  console.log(user);
+  }, []);
   if (session) {
     return (
       <>
