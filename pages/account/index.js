@@ -41,7 +41,7 @@ export default function Account() {
                     className="rounded w-full h-[300px]"
                   ></img>
                 </div>
-                <div className="flex mt-4 items-center">
+                <div className="flex items-center mt-4">
                   <Image
                     src={user?.avatar}
                     alt="user-avatar"
@@ -49,7 +49,7 @@ export default function Account() {
                     height={64}
                     className="rounded-full"
                   />
-                  <div className="p-1 flex-col items-start justify-center">
+                  <div className="flex-col items-start justify-center p-1">
                     <p className="text-xl">{user?.name}</p>
                     <div className=" text-sky-900/50">{user?.email}</div>
                   </div>
