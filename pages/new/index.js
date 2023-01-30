@@ -1,20 +1,21 @@
 import Swal from "sweetalert2";
 import React, { useRef } from "react";
 import { useRouter } from "next/router";
-import { Editor } from "@tinymce/tinymce-react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 export default function New() {
   const router = useRouter();
-  const editorRef = useRef(null);
+  const [value, setValue] = React.useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
     const endpoint = "/api/forum/post";
     const urlencoded = new URLSearchParams();
 
-    if (!event.target.content.value) return alert("你必須輸入內容！");
+    if (!value) return alert("你必須輸入內容！");
 
     urlencoded.append("title", event.target.title.value);
-    urlencoded.append("content", event.target.content.value);
+    urlencoded.append("content", value);
     urlencoded.append("category", event.target.category.value);
     urlencoded.append("subject", event.target.subject.value);
 
@@ -117,52 +118,10 @@ export default function New() {
                 </div>
               </div>
               <div className="mt-4">
-                <Editor
-                  id="content"
-                  textareaName="content"
-                  apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
-                  onInit={(evt, editor) => (editorRef.current = editor)}
-                  initialValue=""
-                  init={{
-                    selector: "textarea",
-                    toolbar_mode: "scrolling",
-                    height: 300,
-                    menubar: false,
-                    plugins: [
-                      "a11ychecker",
-                      "advlist",
-                      "advcode",
-                      "advtable",
-                      "autolink",
-                      "checklist",
-                      "export",
-                      "lists",
-                      "link",
-                      "image",
-                      "charmap",
-                      "preview",
-                      "anchor",
-                      "searchreplace",
-                      "visualblocks",
-                      "powerpaste",
-                      "fullscreen",
-                      "formatpainter",
-                      "insertdatetime",
-                      "media",
-                      "table",
-                      "help",
-                      "wordcount",
-                    ],
-                    toolbar:
-                      "undo redo | casechange blocks sizes | bold italic underline Strikethrough forecolor backcolor | blockquote code | superscript subscript" + //styles
-                      "bullist numlist checklist outdent indent | table help",
-                    content_style:
-                      "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-                  }}
-                />
+                <ReactQuill theme="snow" value={value} onChange={setValue} />
               </div>
               <div>
-                <p className="text-base opacity-60">
+                <p className="text-base opacity-60 mt-2">
                   <a className="text-base ml-2">※</a>
                   <a className="ml-2 text-sm">發送問題即表示您同意</a>
                   <a

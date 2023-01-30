@@ -4,14 +4,15 @@ import React, { useRef } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { BsBookmark } from "react-icons/bs";
-import { Editor } from "@tinymce/tinymce-react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
 import { timestamp2string } from "../../utils/Timestamp2String";
 
 export default function PostID() {
   const router = useRouter();
-  const editorRef = useRef(null);
+  const [value, setValue] = React.useState("");
   const [post, setPost] = React.useState({});
   const [reply, setReply] = React.useState(null);
   const [replyCount, setReplyCount] = React.useState(0);
@@ -39,9 +40,9 @@ export default function PostID() {
     const endpoint = `/api/forum/reply/${post.id}`;
     const urlencoded = new URLSearchParams();
 
-    if (!event.target.content.value) return alert("你必須輸入內容！");
+    if (!value) return alert("你必須輸入內容！");
 
-    urlencoded.append("content", event.target.content.value);
+    urlencoded.append("content", value);
 
     const options = {
       method: "POST",
@@ -147,52 +148,7 @@ export default function PostID() {
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
             <form onSubmit={handleSubmit}>
               <h1 className="text-2xl ml-1 mb-4">留言</h1>
-              <Editor
-                disabled={post.solved}
-                id="content"
-                textareaName="content"
-                apiKey={process.env.NEXT_PUBLIC_EDITORKEY}
-                onInit={(evt, editor) => (editorRef.current = editor)}
-                initialValue={
-                  post.solved ? "<h1>問題已解決不再接受留言！</h1>" : ""
-                }
-                init={{
-                  selector: "textarea",
-                  toolbar_mode: "scrolling",
-                  height: 155,
-                  menubar: false,
-                  plugins: [
-                    "a11ychecker",
-                    "advlist",
-                    "advcode",
-                    "advtable",
-                    "autolink",
-                    "checklist",
-                    "export",
-                    "lists",
-                    "link",
-                    "image",
-                    "charmap",
-                    "preview",
-                    "anchor",
-                    "searchreplace",
-                    "visualblocks",
-                    "powerpaste",
-                    "fullscreen",
-                    "formatpainter",
-                    "insertdatetime",
-                    "media",
-                    "table",
-                    "help",
-                    "wordcount",
-                  ],
-                  toolbar:
-                    "undo redo | casechange blocks sizes | bold italic underline Strikethrough forecolor backcolor | blockquote code | superscript subscript" + //styles
-                    "bullist numlist checklist outdent indent | table help",
-                  content_style:
-                    "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
-                }}
-              />
+              <ReactQuill theme="snow" value={value} onChange={setValue} />
               <div>
                 <p className="text-base opacity-60">
                   <a className="text-base ml-2">※</a>
