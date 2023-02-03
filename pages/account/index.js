@@ -35,13 +35,13 @@ export default function Account() {
               </div>
 
               <div className="mt-3">
-                <div className="w-full h-[300px] ">
-                  <img
-                    src={user?.avatar}
-                    className="rounded w-full h-[300px]"
-                  ></img>
-                </div>
                 <div className="flex items-center mt-4">
+                  <button
+                    className="fixed px-2.5 py-2 text-center text-white rounded-lg right-10 bg-dark-purple disabled:opacity-40 disabled:cursor-no-drop max-md:hidden"
+                    disabled
+                  >
+                    編輯使用者資料
+                  </button>
                   <Image
                     src={user?.avatar}
                     alt="user-avatar"
@@ -49,9 +49,9 @@ export default function Account() {
                     height={64}
                     className="rounded-full"
                   />
-                  <div className="flex-col items-start justify-center p-1">
-                    <p className="text-xl">{user?.name}</p>
-                    <div className=" text-sky-900/50">{user?.email}</div>
+                  <div className="flex-col items-start justify-center p-1 ml-2">
+                    <p className="text-xl font-black">{user?.name}</p>
+                    {/* <div className=" text-sky-900/50">{user?.email}</div> */}
                   </div>
 
                   {/* 歡迎回來，{session.user.name} <br />*/}
@@ -61,6 +61,12 @@ export default function Account() {
                   >
                     登出
                   </button> */}
+                </div>
+                <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
+                  <p className="text-left opacity-60">電子郵件:</p>
+                  <div className="w-full mt-1 bg-gray-300 rounded ">
+                    <p className="mt-1 mb-1 ml-1">{user?.mail}</p>
+                  </div>
                 </div>
               </div>
             </div>
