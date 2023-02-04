@@ -80,22 +80,22 @@ export default function Account() {
                   </div>
                   <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
                     <p className="text-left opacity-60">性別:</p>
-                    <div className="w-full mt-1 bg-gray-300 rounded ">
+                    <div className="p-1 w-full mt-1 bg-gray-300 rounded font-light	">
                       <p className="mt-1 mb-1 ml-1">{genders[user?.gender]}</p>
                     </div>
                   </div>
                   <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
                     <p className="text-left opacity-60">電子郵件:</p>
-                    <div className="w-full mt-1 bg-gray-300 rounded">
-                      <p className="mt-1 mb-1 ml-1 mr-1 select-text">
+                    <div className="p-1 w-full mt-1 bg-gray-300 rounded">
+                      <p className="mt-1 mb-1 ml-1 mr-1 select-text font-light	">
                         {user?.mail}
                       </p>
                     </div>
                   </div>
                   <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
-                    <p className="text-left opacity-60">個人介紹:</p>
+                    <p className="text-left opacity-60 p-1">個人介紹:</p>
                     <textarea
-                      className="w-full h-24 mt-1 text-xl bg-gray-300 border-none rounded focus:outline-none focus:ring-0 focus:border-none"
+                      className="w-full h-24 mt-1 text-xl bg-gray-300 border-none rounded focus:outline-none focus:ring-0 focus:border-none font-light	"
                       defaultValue={descriptions[user?.description]}
                     ></textarea>
                   </div>
