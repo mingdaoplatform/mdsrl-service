@@ -4,6 +4,14 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Account() {
+  const genders = {
+    None: "未設定",
+    Male: "男生",
+    Female: "女生",
+  };
+  const descriptions = {
+    None: "未設定",
+  };
   const { data: session, status } = useSession();
   const [user, setUser] = useState(null);
   React.useEffect(() => {
@@ -49,15 +57,14 @@ export default function Account() {
                     我的帳號尚未開放編輯功能
                   </p>
                 </div>
-
                 <div className="mt-3">
                   <div className="flex items-center mt-4">
-                    {/* <button
-                    className="fixed px-2.5 py-2 text-center text-white rounded-lg right-10 bg-dark-purple disabled:opacity-40 disabled:cursor-no-drop max-md:hidden"
-                    disabled
-                  >
-                    編輯使用者資料
-                  </button> */}
+                    <button
+                      className="fixed px-2.5 py-2 text-center text-white rounded-lg right-8 bg-dark-purple disabled:opacity-40 disabled:cursor-no-drop max-md:hidden"
+                      disabled
+                    >
+                      編輯使用者資料
+                    </button>
                     <Image
                       src={user ? user?.avatar : "/default-avatar.png"}
                       alt="user-avatar"
@@ -66,21 +73,39 @@ export default function Account() {
                       className="rounded-full"
                     />
                     <div className="flex-col items-start justify-center p-1 ml-2">
-                      <p className="text-xl font-black">{user?.name}</p>
+                      <p className="overflow-hidden text-xl font-black text-ellipsis">
+                        {user?.name}
+                      </p>
                     </div>
-
-                    {/* <button
-                      onClick={() => signOut()}
-                      className="px-3 py-1.5 text-white rounded bg-dark-purple mt-2"
-                    >
-                      登出
-                    </button> */}
+                  </div>
+                  <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
+                    <p className="text-left opacity-60">性別:</p>
+                    <div className="w-full mt-1 bg-gray-300 rounded ">
+                      <p className="mt-1 mb-1 ml-1">{genders[user?.gender]}</p>
+                    </div>
                   </div>
                   <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
                     <p className="text-left opacity-60">電子郵件:</p>
-                    <div className="w-full mt-1 bg-gray-300 rounded ">
-                      <p className="mt-1 mb-1 ml-1">{user?.mail}</p>
+                    <div className="w-full mt-1 bg-gray-300 rounded">
+                      <p className="mt-1 mb-1 ml-1 mr-1 select-text">
+                        {user?.mail}
+                      </p>
                     </div>
+                  </div>
+                  <div className="flex flex-col mt-4 ml-2 text-xl font-bold">
+                    <p className="text-left opacity-60">個人介紹:</p>
+                    <textarea
+                      className="w-full h-24 mt-1 text-xl bg-gray-300 border-none rounded focus:outline-none focus:ring-0 focus:border-none"
+                      defaultValue={descriptions[user?.description]}
+                    ></textarea>
+                  </div>
+                  <div className="flex flex-col items-center mt-4 ml-2 text-xl font-bold">
+                    <button
+                      onClick={() => signOut()}
+                      className="w-20 px-3 py-2 mt-2 text-white rounded bg-dark-purple"
+                    >
+                      登出
+                    </button>
                   </div>
                 </div>
               </div>
