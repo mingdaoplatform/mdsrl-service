@@ -24,8 +24,8 @@ export default async function handler(req, res) {
           post.last_reply = Date.now();
           post.reply.push({
             id: md5(Date.now().toString()),
-            author: "TEST ACCOUNT",
-            author_id: "1234567890",
+            author: "匿名貼文者",
+            author_id: "00000000",
             content: req.body.content,
             floor: "B" + (post.reply.length + 1).toString(),
             delete: false,
