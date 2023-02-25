@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { BsBookmark } from "react-icons/bs";
+import { useSession } from "next-auth/react";
 import { Editor } from "@tinymce/tinymce-react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FiMessageCircle } from "react-icons/fi";
@@ -12,6 +13,7 @@ import { timestamp2string } from "../../utils/Timestamp2String";
 export default function PostID() {
   const router = useRouter();
   const editorRef = useRef(null);
+  const { data: session } = useSession();
   const [post, setPost] = React.useState({});
   const [reply, setReply] = React.useState(null);
   const [replyCount, setReplyCount] = React.useState(0);
@@ -39,6 +41,28 @@ export default function PostID() {
     const endpoint = `/api/forum/reply/${post.id}`;
     const urlencoded = new URLSearchParams();
 
+    if (!session) {
+      Swal.fire({
+        title: "留言失敗",
+        text: "您必須登入後才能留言，請至我的帳號登入",
+        icon: "error",
+        confirmButtonText: "確認",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        confirmButtonColor: "#081A51",
+        customClass: {
+          container: "select-none",
+        },
+        focusConfirm: false,
+        background: "#fff url(/trees.png)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/nyan-cat.gif")
+          left top
+          no-repeat
+        `,
+      });
+    }
     if (!event.target.content.value) return alert("你必須輸入內容！");
 
     urlencoded.append("content", event.target.content.value);
@@ -54,32 +78,55 @@ export default function PostID() {
 
     const response = await fetch(endpoint, options);
     const result = await response.json();
-    setReplyCount(replyCount + 1);
-    Swal.fire({
-      title: "成功送出新的留言！",
-      icon: "success",
-      confirmButtonText: "確認",
-      allowEscapeKey: false,
-      allowOutsideClick: false,
-      confirmButtonColor: "#081A51",
-      customClass: {
-        container: "select-none",
-      },
-      focusConfirm: false,
-      background: "#fff url(/trees.png)",
-      backdrop: `
-        rgba(0,0,123,0.4)
-        url("/nyan-cat.gif")
-        left top
-        no-repeat
-      `,
-    });
+    if (response.status === 401) {
+      Swal.fire({
+        title: "留言失敗",
+        text: "您必須登入後才能留言，請至我的帳號登入",
+        icon: "error",
+        confirmButtonText: "確認",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        confirmButtonColor: "#081A51",
+        customClass: {
+          container: "select-none",
+        },
+        focusConfirm: false,
+        background: "#fff url(/trees.png)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/nyan-cat.gif")
+          left top
+          no-repeat
+        `,
+      });
+    } else {
+      setReplyCount(replyCount + 1);
+      Swal.fire({
+        title: "成功送出新的留言！",
+        icon: "success",
+        confirmButtonText: "確認",
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        confirmButtonColor: "#081A51",
+        customClass: {
+          container: "select-none",
+        },
+        focusConfirm: false,
+        background: "#fff url(/trees.png)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/nyan-cat.gif")
+          left top
+          no-repeat
+        `,
+      });
+    }
   };
 
   const ReplyHtml = [];
   if (replies.length === 0) {
     ReplyHtml.push(
-      <h1 className="text-center mt-5 text-3xl mb-4" key="No Reply">
+      <h1 className="mt-5 mb-4 text-3xl text-center" key="No Reply">
         沒有任何留言
       </h1>
     );
@@ -92,7 +139,7 @@ export default function PostID() {
         >
           <div className="ml-1 text-dark-purple/40">
             <h1 className="text-lg">{replies[i].author}</h1>
-            <div className="text-sm flex mb-4">
+            <div className="flex mb-4 text-sm">
               <p className="text-dark-purple/75">{replies[i].floor}</p>
               <p>｜</p>
               <p>
@@ -112,11 +159,11 @@ export default function PostID() {
   return (
     <>
       <main className="overflow-y-scroll h-[calc(100vh-105px)] noscroll max-md:h-[calc(100svh-70px-105px)]">
-        <div className="flex-column p-3 ">
+        <div className="p-3 flex-column ">
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple/40">
             <div className="ml-1">
               <h1 className="text-lg">{post.author}</h1>
-              <div className="text-sm flex">
+              <div className="flex text-sm">
                 <p className="text-dark-purple/75">1F</p>
                 <p>｜</p>
                 <p>
@@ -130,15 +177,15 @@ export default function PostID() {
             </div>
             <div className="mt-3 ml-1 text-dark-purple">{content}</div>
             <div className="flex mt-2 rounded-lg text-dark-purple">
-              <span className="p-1 rounded-lg transition-colors flex items-center opacity-30">
+              <span className="flex items-center p-1 transition-colors rounded-lg opacity-30">
                 <AiOutlineHeart className="text-xl" />
                 <p className="ml-1">{post.like}</p>
               </span>
-              <span className="p-2 hover:bg-gray-200 rounded-lg cursor-pointer transition-colors flex items-center">
+              <span className="flex items-center p-2 transition-colors rounded-lg cursor-pointer hover:bg-gray-200">
                 <FiMessageCircle className="text-xl" />
                 <p className="ml-1">{reply}</p>
               </span>
-              <span className="p-2 hover:bg-light-white rounded-lg transition-colors flex items-center opacity-30">
+              <span className="flex items-center p-2 transition-colors rounded-lg hover:bg-light-white opacity-30">
                 <BsBookmark className="text-xl" />
                 <p className="ml-1">{post.collect}</p>
               </span>
@@ -146,7 +193,7 @@ export default function PostID() {
           </div>
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
             <form onSubmit={handleSubmit}>
-              <h1 className="text-2xl ml-1 mb-4">留言</h1>
+              <h1 className="mb-4 ml-1 text-2xl">留言</h1>
               <Editor
                 disabled={post.solved}
                 id="content"
@@ -187,10 +234,10 @@ export default function PostID() {
               />
               <div>
                 <p className="text-base opacity-60">
-                  <a className="text-base ml-2">※</a>
+                  <a className="ml-2 text-base">※</a>
                   <a className="ml-2 text-sm">發送留言即表示您同意</a>
                   <a
-                    className="text-sm text-red-500 ml-1 hover:cursor-pointer"
+                    className="ml-1 text-sm text-red-500 hover:cursor-pointer"
                     onClick={() => {
                       router.push("/rule");
                     }}
@@ -201,7 +248,7 @@ export default function PostID() {
               </div>
               <div className="mt-4 text-center m">
                 <button
-                  className="text-center py-3 px-4 bg-dark-purple rounded-lg text-white hover:cursor-pointer disabled:hover:cursor-default disabled:bg-dark-purple/30"
+                  className="px-4 py-3 text-center text-white rounded-lg bg-dark-purple hover:cursor-pointer disabled:hover:cursor-default disabled:bg-dark-purple/30"
                   type="submit"
                   disabled={post.solved}
                 >
@@ -211,7 +258,7 @@ export default function PostID() {
             </form>
           </div>
           <div className="mt-2 p-5 shadow-[0_0px_40px_-15px_rgba(0,0,0,0.3)] rounded-lg w-full text-dark-purple">
-            <h1 className="text-2xl ml-1 mb-4">所有留言</h1>
+            <h1 className="mb-4 ml-1 text-2xl">所有留言</h1>
             {ReplyHtml}
           </div>
         </div>

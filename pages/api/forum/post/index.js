@@ -1,5 +1,7 @@
 import dbConnect from "../../../../utils/dbConnect";
 import PostDB from "../../../../models/post";
+import UserDB from "../../../../models/user";
+import { getSession } from "next-auth/react";
 import md5 from "js-md5";
 
 export default async function handler(req, res) {
@@ -7,8 +9,11 @@ export default async function handler(req, res) {
   const sort = req.query.sort;
   const headers = req.headers;
   const key = process.env.NEXT_PUBLIC_POSTKEY;
+  const session = await getSession({ req });
   if (req.method === "POST") {
-    if (!headers.key) {
+    if (!session) {
+      res.status(401).json({ message: "401: Unauthorized" });
+    } else if (!headers.key) {
       res.status(401).json({ message: "401: Unauthorized" });
     } else if (headers.key !== key) {
       res.status(401).json({ message: "401: Invalid authentication token" });
@@ -17,6 +22,7 @@ export default async function handler(req, res) {
         res.status(400).json({ message: "400: Invalid form body" });
       } else {
         await dbConnect();
+        const user = await UserDB.findOne({ mail: session.user.email });
         const NewPost = new PostDB({
           id: md5(Date.now().toString()),
           title: req.body.title,
@@ -24,8 +30,8 @@ export default async function handler(req, res) {
           category: req.body.category,
           subject: req.body.subject,
           solved: false,
-          author: "匿名貼文者",
-          author_id: "00000000",
+          author: user.name,
+          author_id: user.id,
           like: 0,
           reply: [],
           collect: 0,
